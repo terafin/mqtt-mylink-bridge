@@ -1,8 +1,11 @@
-FROM node:lts-alpine
-RUN apk add --no-cache git g++ musl-dev libc-dev linux-headers tzdata python3-dev python2-dev make gcc ; mkdir -p /usr/node_app
+FROM ubuntu:bionic
 
+RUN mkdir -p /usr/node_app
 COPY . /usr/node_app
 WORKDIR /usr/node_app
+RUN apt-get update ; apt-get install -fy git python musl-dev make gcc g++ npm curl dirmngr apt-transport-https lsb-release ca-certificates
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash
+RUN apt-get update ; apt-get -fy install nodejs
 
 RUN npm install --production
 
