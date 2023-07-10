@@ -9,7 +9,7 @@ I have a collection of bridges, and the general format of these begins with thes
       MQTT_HOST: YOUR_MQTT_URL (eg: mqtt://mqtt.yourdomain.net)
       (OPTIONAL) MQTT_USER: YOUR_MQTT_USERNAME
       (OPTIONAL) MQTT_PASS: YOUR_MQTT_PASSWORD
-````
+```
 
 This bridge only supports 3 actions, up, down and stop. You need to send the commands in the following format (with CC1137F2.1 as my example blind integration target)
 
@@ -18,14 +18,13 @@ This bridge only supports 3 actions, up, down and stop. You need to send the com
    value: (up|down|stop)
 ```
 
-
 Here's an example docker compose:
 
 ```mqtt
 version: '3.3'
 services:
   mqtt-mylink-bridge:
-    image: terafin/mqtt-mylink-bridge:latest
+    image: ghcr.io/terafin/mqtt-mylink-bridge:latest
     environment:
       LOGGING_NAME: mqtt-mylink-bridge
       TZ: America/Los_Angeles
@@ -38,4 +37,3 @@ services:
       (OPTIONAL) MQTT_USER: YOUR_MQTT_USERNAME
       (OPTIONAL) MQTT_PASS: YOUR_MQTT_PASSWORD
 ```
-
